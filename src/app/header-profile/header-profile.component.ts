@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Account } from '../account';
+import { AccountService } from '../account.service';
 
 @Component({
   selector: 'app-header-profile',
@@ -8,9 +9,19 @@ import { Account } from '../account';
 })
 export class HeaderProfileComponent implements OnInit {
 
-  account = new Account('firstname', 'lastname');
+  //วิธีการใช้service
+  //accountService: AccountService;
 
-  constructor() { }
+  //private account: Account 
+  constructor(
+  //typeชื่อclassของservice  คือ AccountSevice
+  //มันใช้ได้แต่ในconstructor ถ้าไม่มีprivate
+  // public ถ้านำมาใช้ในcomponentจะมีความสำคัญระดับนึง
+  public accountService: AccountService
+  ) { 
+   // this.accountService = accountService;
+   console.log(this.accountService.account)
+  }
 
   ngOnInit() {
   }
